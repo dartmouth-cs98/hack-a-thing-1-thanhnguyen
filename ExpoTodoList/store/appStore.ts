@@ -3,16 +3,15 @@
 //
 // For CS98 with Professor Tim Tregubov
 // adapted from:
-//   https://redux-toolkit.js.org/api/configureStore#full-example
+//   https://redux-toolkit.js.org/usage/usage-guide#simplifying-store-setup-with-configurestore
 //------------------------------------------------------------------------------
-import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from '../reducers/rootReducer';
+import { configureStore } from "@reduxjs/toolkit";
+import todosReducer from "../features/todoList/todoListSlice";
 
-// The store has been created with these options:
-// - The slice reducers were automatically passed to combineReducers()
-// - redux-thunk and redux-logger were added as middleware
-// - The Redux DevTools Extension is disabled for production
-// - The middleware, batch, and devtools enhancers were composed together
 export const appStore = configureStore({
-  reducer: rootReducer
+  reducer: {
+    todos: todosReducer,
+  },
 });
+
+export type RootState = ReturnType<typeof appStore.getState>;

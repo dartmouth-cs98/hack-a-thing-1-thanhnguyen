@@ -8,8 +8,9 @@
 
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
+import { StyleSheet } from "react-native";
 import { Provider as PaperProvider } from "react-native-paper";
-import { SafeAreaProvider } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { Provider as StoreProvider } from "react-redux";
 import { PaperTheme } from "./constants/PaperTheme";
 import useCachedResources from "./hooks/useCachedResources";
@@ -26,13 +27,25 @@ const App = (): JSX.Element | null => {
       <StoreProvider store={appStore}>
         <PaperProvider theme={PaperTheme}>
           <SafeAreaProvider>
-            <StatusBar />
-            <TodoListScreen />
+            <SafeAreaView style={styles.AppBackground}>
+              <TodoListScreen />
+              <StatusBar />
+            </SafeAreaView>
           </SafeAreaProvider>
         </PaperProvider>
       </StoreProvider>
     );
   }
 };
+
+const styles = StyleSheet.create({
+  AppBackground: {
+    flex: 1,
+    position: "absolute",
+    width: "100%",
+    alignItems: "flex-start",
+    alignSelf: "center",
+  },
+});
 
 export default App;

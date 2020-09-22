@@ -5,9 +5,10 @@
 //------------------------------------------------------------------------------
 
 export type todoItem = {
-  title: string,
-  completed: boolean,
-  description: string,
-  dateCreated: Date,
-  dateCompleted: Date | null,
+  id: number;
+  title: string;
+  completed: boolean;
+  description: string;
+  dateCreated: string;
+  dateCompleted: string;
 };
