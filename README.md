@@ -11,7 +11,13 @@ The archive is boiler plate code for react-navigation that I ended up not using,
 
 ### Usage
 
-To run the app, move to the TodoListNative directory and run npm install.
+To run the app:
+- move to the TodoListNative directory
+- get the expo command line interface (cli): `npm i expo-cli`
+- run `expo start`
+- get the expo app on ios or android
+- scan the QR code given from the expo cli
+- the expo project should run on your mobile device!
 NOTE: an updated version of Node is required.
 
 ### Learnings
