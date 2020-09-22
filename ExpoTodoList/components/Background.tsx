@@ -7,15 +7,15 @@
 //------------------------------------------------------------------------------
 
 import * as React from "react";
-import { View as DefaultView } from "react-native";
+import { View } from "react-native";
 import { useTheme } from "react-native-paper";
 
-export type ViewProps = DefaultView["props"];
+export type ViewProps = View["props"];
 
 const Background = (props: ViewProps): JSX.Element => {
   const theme = useTheme();
   const backgroundColor = theme.colors.background;
-  return <DefaultView style={[{ backgroundColor }]} {...props} />;
+  return <View style={[{ backgroundColor }]} {...props} />;
 };
 
 export default Background;

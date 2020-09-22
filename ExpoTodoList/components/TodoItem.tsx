@@ -5,36 +5,40 @@
 //------------------------------------------------------------------------------
 
 import * as React from "react";
-import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Caption, Text, ToggleButton } from "react-native-paper";
+import { useDispatch } from "react-redux";
+import { toggleTodo } from "../features/todoList/todoListSlice";
+import { todoItem } from "../models/todoItem";
 
 type TodoItemProps = {
-  title: string;
-  dateCreated: Date;
-  description?: string;
-  dateCompleted?: Date;
+  todo: todoItem;
 };
 
 const TodoItem = (props: TodoItemProps): JSX.Element => {
-  const [isChecked, setIsChecked] = useState(false);
+  const isCompleted = props.todo.completed;
   const [checkedBoxIcon, uncheckedBoxIcon] = [
     "checkbox-marked-circle-outline",
     "checkbox-blank-circle-outline",
   ];
 
+  const dispatch = useDispatch();
+  const dispatchToggleTodo = () => {
+    dispatch(toggleTodo(props.todo.id));
+  };
+
   return (
     <View style={styles.horizontalAlign}>
       <ToggleButton
-        icon={isChecked ? checkedBoxIcon : uncheckedBoxIcon}
+        icon={isCompleted ? checkedBoxIcon : uncheckedBoxIcon}
         value="checkbox"
-        onPress={() => setIsChecked(!isChecked)}
+        onPress={dispatchToggleTodo}
       />
       <View>
-        <Text style={isChecked ? styles.strikedText : styles.normalText}>
-          {props.title}
+        <Text style={isCompleted ? styles.strikedText : styles.normalText}>
+          {props.todo.title}
         </Text>
-        <Caption>{props.description}</Caption>
+        <Caption>{props.todo.description}</Caption>
       </View>
     </View>
   );

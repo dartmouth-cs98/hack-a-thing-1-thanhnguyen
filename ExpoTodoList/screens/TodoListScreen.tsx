@@ -2,23 +2,29 @@
 // @author: Thanh Nguyen Jr, Dartmouth College, Fall 2020
 //
 // For CS98 with Professor Tim Tregubov
-// adapted from:
-//   https://redux-toolkit.js.org/api/configureStore#full-example
 //------------------------------------------------------------------------------
 
 import * as React from "react";
 import { StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
+import { useSelector } from "react-redux";
+import AddTodo from "../components/AddTodo";
 import Background from "../components/Background";
-import TodoItem from "../components/TodoItem";
+import TodoList from "../components/TodoList";
+import { todoItem } from "../models/todoItem";
+import { RootState } from "../store/appStore";
 
 const TodoListScreen = (): JSX.Element => {
+  const title = "My Todo List";
+  const todoItems: Array<todoItem> = useSelector(
+    (state: RootState) => state.todos
+  );
+
   return (
     <Background style={styles.container}>
-      <TodoItem
-        title={"testtitle"}
-        dateCreated={new Date()}
-        description={"testdescription test description"}
-      />
+      <Text style={styles.title}>{title}</Text>
+      <TodoList todos={todoItems} />
+      <AddTodo />
     </Background>
   );
 };
@@ -26,17 +32,15 @@ const TodoListScreen = (): JSX.Element => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    width: "80%",
+    alignSelf: "center",
   },
   title: {
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+    paddingBottom: 16,
+    justifyContent: "flex-start",
+    flex: 1,
   },
 });
 
