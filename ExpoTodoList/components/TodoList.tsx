@@ -16,11 +16,13 @@ type TodoListProps = {
 const TodoList = (props: TodoListProps): JSX.Element => {
   const todosCopy = [...props.todos];
 
-  const sortedTodos = todosCopy
-    //.sort()
-    .map((todo) => {
-      return <TodoItem key={todo.id} todo={todo} />;
-    });
+  const sortByCompleted = (a: todoItem, b: todoItem) => {
+    return a.completed && !b.completed ? 1 : -1;
+  };
+
+  const sortedTodos = todosCopy.sort(sortByCompleted).map((todo) => {
+    return <TodoItem key={todo.id} todo={todo} />;
+  });
   return <View style={styles.container}>{sortedTodos}</View>;
 };
 
