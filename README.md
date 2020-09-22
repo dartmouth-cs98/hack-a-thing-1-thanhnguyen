@@ -7,6 +7,8 @@
 This is an Expo project meant to explore development of a mobile app using React Native, Redux, and other technologies.
 I started to make a todo list mobile application. It supports adding items and sorts the items by their completion status. There is a check box to toggle whether an item is completed or not completed.
 
+![Image of the App on iPhone](https://github.com/dartmouth-cs98/hack-a-thing-1-thanhnguyen/edit/master/ExpoTodoListScreenshot.png)
+
 The archive is boiler plate code for react-navigation that I ended up not using, but I learned a lot from.
 
 ### Usage
