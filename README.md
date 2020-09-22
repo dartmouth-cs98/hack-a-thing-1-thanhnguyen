@@ -7,6 +7,8 @@
 This is an Expo project meant to explore development of a mobile app using React Native, Redux, and other technologies.
 I started to make a todo list mobile application.
 
+The archive is boiler plate code for react-navigation that I ended up not using, but I learned a lot from.
+
 ### Usage
 
 To run the app, move to the TodoListNative directory and run npm install.
